@@ -4,19 +4,7 @@ import { LitElement, html, css } from 'lit-element';
 // Extend the LitElement base class
 class MyElement extends LitElement {
 
-  /**
-   * Implement `render` to define a template for your element.
-   *
-   * You must provide an implementation of `render` for any element
-   * that uses LitElement as a base class.
-   */
   render(){
-    /**
-     * `render` must return a lit-html `TemplateResult`.
-     *
-     * To create a `TemplateResult`, tag a JavaScript template literal
-     * with the `html` helper function:
-     */
     return html`
     <style>
         :host([hidden]) { display: none; }
@@ -26,8 +14,17 @@ class MyElement extends LitElement {
         }
       </style>
       <!-- template content -->
-      <p>A paragraph</p>
+      
+      <input type="text" id="textbox22" value="Change the paragraph" @change="${this.handleChange}"/>
+      <p id="paragraph">A paragraph</p>
     `;
+  }
+
+  handleChange(e) {
+    console.log("asdf2");
+    console.log("En null:"+document.getElementById("textbox22"));
+    console.log("Error:"+document.getElementById("textbox22").value);
+    document.getElementById("paragraph").innerHTML=document.getElementById("textbox22").value;
   }
 }
 // Register the new element with the browser.
