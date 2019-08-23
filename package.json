@@ -1,0 +1,24 @@
+{
+  "name": "lit-element-course",
+  "version": "1.0.0",
+  "description": "Learning project",
+  "main": "my-element.js",
+  "dependencies": {
+    "lit-element": "^2.2.1",
+    "lit-html": "^1.1.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/srferron/lit-element-course.git"
+  },
+  "author": "sori",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/srferron/lit-element-course/issues"
+  },
+  "homepage": "https://github.com/srferron/lit-element-course#readme"
+}
