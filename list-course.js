@@ -12,7 +12,7 @@ class ListCourse extends LitElement {
     
     constructor() {
         super();
-        this.table = Array.from(new Array(6), (x, i) => "test data " + i);
+        this.table = Array.from({length: 6}, (x, i) => "test data " + i);
         this.table.map((item) => console.log(item));
     }
 
@@ -26,9 +26,6 @@ class ListCourse extends LitElement {
     }
 
     get templateRows() {
-        if (this.table === undefined) {
-            throw new Error('La propiedad rows no ha sido definida.');
-        }
         return this.table.map((cell, index)=> html`<tr style="background:${(index % 2 === 0 ? "#CCC" : "#FFF")}"><td>${cell}</td></tr>` );
     }
 }
