@@ -13,19 +13,34 @@ class InputCourse extends LitElement {
  
   render(){
     return html`
-      <input type="text" @input="${(event) => this.handleChange(event, '')}" />
+      <input type="text" @input="${(event) => this.handleInput(event, '')}" @change="${(event) => this.handleChange(event)}"/>
     `;
   }
 
   handleChange(event, other) {
+      //debugger
+    if(event.target.value.length>2){
+      const customEvent = new CustomEvent('input-change', {
+        detail:{inputChange: event.target.value},
+        bubbles: true,
+        composed: true
+      });
+      this.dispatchEvent(customEvent);
+    }
+
+    
+  }
+
+  handleInput(event, other) {
     //debugger
-    let customEvent = new CustomEvent('input-change', {
-        detail:{inputChanges: event.target.value},
+    const customEvent = new CustomEvent('input-pulse', {
+        detail:{inputPulses: event.target.value},
         bubbles: true,
         composed: true
       });
       this.dispatchEvent(customEvent);
   }
 }
+
 // Register the new element with the browser.
 customElements.define('input-course', InputCourse); 

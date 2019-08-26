@@ -5,15 +5,14 @@ class ListCourse extends LitElement {
 
     static get properties() { 
         return { 
-            table: { type: String },
+            table: { type: Array },
         };
     }
 
     
     constructor() {
-        super();
-        this.table = Array.from({length: 6}, (x, i) => "test data " + i);
-        this.table.map((item) => console.log(item));
+        this.table = []
+
     }
 
     render(){
