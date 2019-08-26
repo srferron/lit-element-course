@@ -20,7 +20,7 @@ class InputCourse extends LitElement {
   handleChange(event, other) {
       //debugger
     if(event.target.value.length>2){
-      let customEvent = new CustomEvent('input-change', {
+      const customEvent = new CustomEvent('input-change', {
         detail:{inputChange: event.target.value},
         bubbles: true,
         composed: true
@@ -33,7 +33,7 @@ class InputCourse extends LitElement {
 
   handleInput(event, other) {
     //debugger
-    let customEvent = new CustomEvent('input-pulse', {
+    const customEvent = new CustomEvent('input-pulse', {
         detail:{inputPulses: event.target.value},
         bubbles: true,
         composed: true

@@ -5,13 +5,18 @@ import './h1-course.js';
 import './list-course.js';
 
 class ContainerCourse extends LitElement {
-    static get properties() { 
+    
+  static get properties() { 
         return { 
           header: { type: String },
-          row: { type: String },
+          table: { type: Array }
         };
       }
-
+      
+      constructor() {
+        super();
+        this.table = [];
+      }
 
     render() {
         return html`
@@ -21,17 +26,19 @@ class ContainerCourse extends LitElement {
         
         <span>
           <h2>Issue 5</h2>
-          <list-course row="${this.row}"></list-course>
+          <list-course .table="${this.table}"></list-course>
         </span>
         `;
     }
+    // pepe;
 
     handleChangeEvent(event) {   
-      console.log("log change:"+event.detail.inputChange);
-      this.row = event.detail.inputChange;
+      console.log("log change2:"+event.detail.inputChange);
+      this.table.push(event.detail.inputChange)
+      this.table=[...this.table];
       //debugger
     }
-
+   
     handleInputEvent(event, other) {
         
         console.log("log:"+event.detail.inputPulses);
