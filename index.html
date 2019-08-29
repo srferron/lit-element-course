@@ -1,15 +1,33 @@
 <head>
-    <script type="module" src="./my-element.js"></script>
     <script type="module" src="./container-course.js"></script>
-    
+    <style>
+        :host([hidden]) { display: none; }
+        :host { display: block;
+          background-color: red;
+          font-size: 45;
+        }
+        h2{color: red;}
+        p:last-child {
+          display: block;
+          color: yellow;
+        }
+        p:nth-child(1) {
+          color: white;
+        }
+        p:first-child {
+          color: blue;
+        }
+        input[type=text] {
+          display: block;
+          border-radius:8px;
+          border: 1px solid #666;
+        }
+      </style>
   </head>
   <body>
     
     <span>
       <h2>Issue 4</h2>
       <container-course></container-course>
-    </span>
-    <span>
-        <my-element></my-element>
     </span>
   </body>

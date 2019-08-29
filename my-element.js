@@ -12,37 +12,11 @@ class MyElement extends LitElement {
 
   constructor() {
    super();
-  //  this.input = document.getElementById.value;
-  //  this.paragraph = document.getElementById('paragraph');
   }
  
   render(){
     return html`
-    <style>
-        :host([hidden]) { display: none; }
-        :host { display: block;
-          background-color: red;
-          font-size: 45;
-        }
-        p:last-child {
-          display: block;
-          color: yellow;
-        }
-
-        p:nth-child(1) {
-          color: white;
-        }
-        p:first-child {
-          color: blue;
-        }
-
-        input[type=text] {
-          display: block;
-          border-radius:8px;
-          border: 1px solid #666;
-        }
-
-      </style>
+   
       <!-- template content -->
       
       <input type="text" @input="${(event) => this.handleChange(event, '')}" />
