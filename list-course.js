@@ -11,6 +11,7 @@ class ListCourse extends LitElement {
 
     
     constructor() {
+        super();
         this.table = []
 
     }
