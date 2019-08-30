@@ -26,7 +26,7 @@ class ListCourse extends LitElement {
     }
 
     get templateRows() {
-        return this.table.map((cell, index)=> html`<tr style="background:${(index % 2 === 0 ? "#CCC" : "#FFF")}"><td>${cell}</td></tr>` );
+        return this.table.map((cell, index)=> html`<tr style="background:${cell.rowColor}"><td style="color:${cell.fontColor}">${cell.rowValue}</td></tr>` );
     }
 }
 

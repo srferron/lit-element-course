@@ -9,16 +9,29 @@ class KeypadCourse extends LitElement {
     };
   }
 
+  static get styles() {
+    return css`
+      
+      ul:nth-child(1) button {
+        background-color: #87CEFA;
+     }
 
-//   button:nth-child(1) {
-//     background-color: #87CEFA;
-//   }
- 
+     ul:nth-child(2) button {
+        background-color: #DCDCDC;
+     }
+     
+     ul:nth-child(3) button {
+        background-color: #7FFFD4;
+     }
+
+    `;
+  }
+
   render(){
     return html`
-        <span><button @click="${(event) => this.handleClick(event,'click-xhtmlrequest')}">xhtmlRequest</button></span>
-        <span><button @click="${(event) => this.handleClick(event,'click-fetch')}">Fetch</button></span>
-        <span><button @click="${(event) => this.handleClick(event,'click-axios')}">Axios</button></span>
+        <ul><span><button @click="${(event) => this.handleClick(event,'click-xhtmlrequest')}">xhtmlRequest</button></span></ul>
+        <ul><span><button @click="${(event) => this.handleClick(event,'click-fetch')}">Fetch</button></span></ul>
+        <ul><span><button @click="${(event) => this.handleClick(event,'click-axios')}">Axios</button></span></ul>
     `;
   }
 
