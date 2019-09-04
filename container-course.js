@@ -39,6 +39,15 @@ class ContainerCourse extends LitElement {
         animation: spin 2s linear infinite;
       }
 
+      #myDiv{
+        position: absolute;
+        top:0px;
+        left:0px;
+        width: 100%;
+        height: 100%;
+       
+      }
+
       @-webkit-keyframes spin {
         0% { -webkit-transform: rotate(0deg); }
         100% { -webkit-transform: rotate(360deg); }
@@ -73,14 +82,14 @@ class ContainerCourse extends LitElement {
     render() {
         return html`
         
-        <div  id="loader" style="display:none;"></div>
+        <div id="loader" style="display:none;"></div>
         <div id="myDiv">
             <input-course @input-pulse="${(event) => this.handleInputEvent(event, '')}" @input-change="${(event) => this.handleChangeEvent(event)}"></input-course>
             <h1-course header="${this.header}"></h1-course>
             
             <span>
               <h2>Services Issue</h2>
-              <keypad-course @click-xhtmlrequest="${(event) => this.handleClickXHTMLrequest(event)}" @click-fetch="${(event) => this.handleClickFetch(event)}handleClickAxios" @click-axios="${(event) => this.handleClickAxios(event)}"></keypad-course>
+              <keypad-course @click-xhtmlrequest="${(event) => this.handleClickXHTMLrequest(event)}" @click-fetch="${(event) => this.handleClickFetch(event)}" @click-axios="${(event) => this.handleClickAxios(event)}"></keypad-course>
               
               <list-course .table="${this.table}"></list-course>
             </span>
@@ -105,9 +114,8 @@ class ContainerCourse extends LitElement {
       const xhr = new XMLHttpRequest();
       xhr.open("GET", "https://reqres.in/api/unknown", true);
       xhr.onload = () =>  {
-        console.log(xhr.responseText);
         this._assignValues(JSON.parse(xhr.responseText),"#87CEFA");
-        this.showContents();
+        setTimeout(() => this.showContents(), 2000);
       }
       xhr.send();
       //debugger
@@ -119,7 +127,7 @@ class ContainerCourse extends LitElement {
         .then(response => response.json())
         .then((data) => {
           this._assignValues(data,"#DCDCDC");
-          this.showContents();
+          setTimeout(() => this.showContents(), 2000);
       })
     }
 
@@ -132,7 +140,7 @@ class ContainerCourse extends LitElement {
     //   }
 
     _assignValues(obj,color){
-        obj.data.map(element => this.table.push({rowValue:element.name,fontColor:element.color,rowColor:color}));
+        this.table=this.table.concat(obj.data.map(item=> ({rowValue:item.name, fontColor:item.color,rowColor:color})));
         this.table=[...this.table];
     }
    
