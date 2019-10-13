@@ -6,6 +6,7 @@
   "dependencies": {
     "axios": "^0.19.0",
     "lit-element": "^2.2.1",
+    "lit-element-router": "^1.2.5",
     "lit-html": "^1.1.2"
   },
   "devDependencies": {},

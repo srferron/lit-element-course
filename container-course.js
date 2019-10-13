@@ -1,23 +1,56 @@
 import { LitElement, html, css } from 'lit-element';
+import { routerMixin } from 'lit-element-router';
 
 import './input-course.js';
 import './h1-course.js';
 import './list-course.js';
 import './keypad-course.js';
+import './router-links-course.js';
+import './app-link.js';
 //import axios from 'axios';
+//https://stackblitz.com/edit/lit-element-router?file=my-app.js
 
-class ContainerCourse extends LitElement {
+class ContainerCourse extends routerMixin(LitElement) {
     
   static get properties() { 
         return { 
           header: { type: String },
-          table: { type: Array }
+          table: { type: Array },
+          route: { type: String },
+          params: { type: Object }
         };
       }
 
   constructor() {
     super();
     this.table = [{}];
+    this.route = '';
+    this.params = {};
+  }
+
+  static get routes() {
+    return [{
+      name: 'home',
+      pattern: '',
+      data: { title: 'Home' }
+    }, {
+      name: 'xhtmlrequest',
+      pattern: '*/xhtmlrequest'
+    }, {
+      name: 'fetch',
+      pattern: '*/fetch'
+    }, {
+      name: 'not-found',
+      pattern: '*'
+    }];
+  }
+
+  onRoute(route, params, query, data) {
+    if(route=='xhtmlrequest') this.handleClickXHTMLrequest();
+    else if(route=='fetch')this.handleClickFetch();
+    this.route = route;
+    this.params = params;
+    console.log(route, params, query, data)
   }
 
   static get styles() {
@@ -84,14 +117,20 @@ class ContainerCourse extends LitElement {
         
         <div id="loader" style="display:none;"></div>
         <div id="myDiv">
+
+            <app-link href="/">Home</app-link>
+            <app-link href="/xhtmlrequest">Xhtmlrequest</app-link>
+            <app-link href="/fetch">Fetch</app-link>
+            
             <input-course @input-pulse="${(event) => this.handleInputEvent(event, '')}" @input-change="${(event) => this.handleChangeEvent(event)}"></input-course>
             <h1-course header="${this.header}"></h1-course>
             
             <span>
               <h2>Services Issue</h2>
               <keypad-course @click-xhtmlrequest="${(event) => this.handleClickXHTMLrequest(event)}" @click-fetch="${(event) => this.handleClickFetch(event)}" @click-axios="${(event) => this.handleClickAxios(event)}"></keypad-course>
-              
+              <router-links-course></router-links-course>
               <list-course .table="${this.table}"></list-course>
+
             </span>
         </div>
         `;
